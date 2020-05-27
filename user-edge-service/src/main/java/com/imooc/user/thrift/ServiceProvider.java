@@ -41,7 +41,7 @@ public class ServiceProvider {
 
     public MessageService.Client getMessasgeService() {
 
-        return getService("127.0.0.1", 9090, ServiceType.MESSAGE);
+        return getService(messageServerIp, messageServerPort, ServiceType.MESSAGE);
     }
 
     public <T> T getService(String ip, int port, ServiceType serviceType) {
@@ -65,7 +65,7 @@ public class ServiceProvider {
                 result = new MessageService.Client(protocol);
                 break;
         }
-        return (T)result;
+        return (T) result;
     }
 
 }

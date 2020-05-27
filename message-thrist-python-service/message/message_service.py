@@ -1,4 +1,6 @@
 # coding: utf-8
+import sys
+import os
 from message.api import MessageService
 from thrift.transport import TSocket
 from thrift.transport import TTransport
@@ -11,6 +13,9 @@ from email.header import Header
 
 sender = 'shaotianyx@163.com'
 authCode = 'BJFPUWMHYFXSMMEW'
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
 class MessageServiceHandler:
 
     def sendMobileMessage(self, mobile, message):
@@ -37,7 +42,7 @@ class MessageServiceHandler:
 if __name__ == '__main__':
     handler = MessageServiceHandler()
     processor = MessageService.Processor(handler)
-    transport = TSocket.TServerSocket("127.0.0.1", "9090")
+    transport = TSocket.TServerSocket(None, "9090")
     tfactory = TTransport.TFramedTransportFactory()
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
 

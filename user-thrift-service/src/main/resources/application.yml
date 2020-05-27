@@ -1,5 +1,5 @@
 server:
-  name: localhost
+  name: user-service
   port: 7911
 
 #数据源的配置
